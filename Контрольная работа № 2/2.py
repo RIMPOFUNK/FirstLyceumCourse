@@ -6,9 +6,11 @@ def sorted2(data, key=None):
         else:
             ret += [list(sorted(i, key=key))]
     if key:
-        ret = sorted(ret, key=lambda x: x[-1], reverse=True)
-    print(ret)
+        ret = sorted(ret, key=lambda x: key(x[-1]), reverse=True)
+    return ret
 
-    
-sorted2([[1], [2, 3], [4, 5, 6]])
-sorted2([[1], [3, 2], [6, 5, 4]], lambda x: x)
+
+data = [[1], [3, 2], [6, 5, 4]]
+key = lambda x: x
+
+print(sorted2(data, key))
